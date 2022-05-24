@@ -1,6 +1,6 @@
 import { Component } from 'react/cjs/react.production.min';
 
-class Phonebook extends Component {
+class ContactForm extends Component {
   state = {
     name: '',
     number: '',
@@ -21,7 +21,6 @@ class Phonebook extends Component {
   render() {
     return (
       <div>
-        <h1>Phonebook</h1>
         <form onSubmit={this.handleSubmit}>
           <label>
             Name
@@ -56,4 +55,4 @@ class Phonebook extends Component {
   }
 }
 
-export default Phonebook;
+export default ContactForm;

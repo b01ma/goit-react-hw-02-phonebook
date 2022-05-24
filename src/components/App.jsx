@@ -1,7 +1,8 @@
 import { Component } from 'react/cjs/react.production.min';
 import { nanoid } from 'nanoid';
-import Phonebook from './Phonebook/Phonebook';
+import ContactForm from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
+import { ContactList } from './ContactList/ContactList';
 
 export class App extends Component {
   state = {
@@ -31,24 +32,17 @@ export class App extends Component {
   render() {
     return (
       <div>
-        <Phonebook onSubmit={this.addContact} />
+        <h1>Phonebook</h1>
+        <ContactForm onSubmit={this.addContact} />
 
         <h1>Contacts</h1>
 
         <Filter value={this.state.filter} onChange={this.filterChange} />
 
-        <ul>
-          {this.state.contacts.map(
-            contact =>
-              contact.name
-                .toLowerCase()
-                .includes(this.state.filter.toLowerCase()) && (
-                <li key={contact.id}>
-                  {contact.name}: {contact.number}
-                </li>
-              )
-          )}
-        </ul>
+        <ContactList
+          contacts={this.state.contacts}
+          filter={this.state.filter}
+        />
       </div>
     );
   }
