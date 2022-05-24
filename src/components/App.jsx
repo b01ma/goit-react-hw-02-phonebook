@@ -1,5 +1,7 @@
 import { Component } from 'react/cjs/react.production.min';
 import { nanoid } from 'nanoid';
+import Phonebook from './Phonebook/Phonebook';
+import { Filter } from './Filter/Filter';
 
 export class App extends Component {
   state = {
@@ -10,72 +12,30 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
   };
 
-  handleChange = e => {
-    this.setState({ [e.currentTarget.name]: e.currentTarget.value });
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-
+  addContact = (name, number) => {
     const newContact = {
       id: nanoid(),
-      name: this.state.name,
-      number: this.state.number,
+      name,
+      number,
     };
-
     const updatedContacts = [...this.state.contacts, newContact];
-
     this.setState({ contacts: updatedContacts });
-    this.setState({ name: '', number: '' });
+  };
+
+  filterChange = e => {
+    this.setState({ filter: e.currentTarget.value });
   };
 
   render() {
     return (
       <div>
-        <p>Phonebook</p>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Name
-            <input
-              type="text"
-              name="name"
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              required
-              value={this.state.name}
-              onChange={this.handleChange}
-            />
-          </label>
+        <Phonebook onSubmit={this.addContact} />
 
-          <label>
-            Contact
-            <input
-              type="tel"
-              name="number"
-              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-              required
-              value={this.state.number}
-              onChange={this.handleChange}
-            />
-          </label>
+        <h1>Contacts</h1>
 
-          <button type="submit">Add contact</button>
-        </form>
-
-        <p>Contacts</p>
-
-        <p>Find contacts by name</p>
-        <input
-          type="text"
-          name="filter"
-          value={this.state.filter}
-          onChange={this.handleChange}
-        />
+        <Filter value={this.state.filter} onChange={this.filterChange} />
 
         <ul>
           {this.state.contacts.map(
