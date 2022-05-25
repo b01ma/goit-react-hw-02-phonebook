@@ -14,8 +14,4 @@ code {
     monospace;
 }
 
-code {
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-}
+

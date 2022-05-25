@@ -53,32 +53,30 @@ export class App extends Component {
   };
 
   render() {
-    const Wrapper = styled.section`
-      padding: 4em;
-      background: papayawhip;
-      border: 1px solid black;
-      height: 100vh;
+    const wrapper = {
+      padding: 10,
+      background: 'papayawhip',
 
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    `;
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    };
 
     return (
-      <Wrapper>
+      <div style={wrapper}>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
 
         <h1>Contacts</h1>
 
-        <Filter value={this.state.filter} onChange={this.filterChange} />
+        <Filter onChange={this.filterChange} value={this.state.filter} />
 
         <ContactList
           contacts={this.state.contacts}
           filter={this.state.filter}
           onDelete={this.deleteContact}
         />
-      </Wrapper>
+      </div>
     );
   }
 }
