@@ -15,6 +15,12 @@ export class App extends Component {
     filter: '',
   };
 
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
+
   isSameContact = (name, number) => {
     let contactsNameArray = [];
     let contactsNumberArray = [];
@@ -58,6 +64,7 @@ export class App extends Component {
         <ContactList
           contacts={this.state.contacts}
           filter={this.state.filter}
+          onDelete={this.deleteContact}
         />
       </div>
     );
