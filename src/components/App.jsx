@@ -1,6 +1,5 @@
 import { Component } from 'react/cjs/react.production.min';
 import { nanoid } from 'nanoid';
-import styled from 'styled-components';
 import ContactForm from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
@@ -56,6 +55,7 @@ export class App extends Component {
     const wrapper = {
       padding: 10,
       background: 'papayawhip',
+      height: '100vh',
 
       display: 'flex',
       flexDirection: 'column',
