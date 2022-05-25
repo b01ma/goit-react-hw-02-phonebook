@@ -15,6 +15,19 @@ export class App extends Component {
     filter: '',
   };
 
+  isSameContact = (name, number) => {
+    let contactsNameArray = [];
+    let contactsNumberArray = [];
+
+    contactsNameArray = this.state.contacts.map(contact => contact.name);
+
+    contactsNumberArray = this.state.contacts.map(contact => contact.number);
+
+    return (
+      contactsNameArray.includes(name) || contactsNumberArray.includes(number)
+    );
+  };
+
   addContact = (name, number) => {
     const newContact = {
       id: nanoid(),
@@ -22,7 +35,10 @@ export class App extends Component {
       number,
     };
     const updatedContacts = [...this.state.contacts, newContact];
-    this.setState({ contacts: updatedContacts });
+
+    this.isSameContact(name, number)
+      ? alert('This contact is already exists')
+      : this.setState({ contacts: updatedContacts });
   };
 
   filterChange = e => {
