@@ -1,5 +1,6 @@
 import { Component } from 'react/cjs/react.production.min';
 import { nanoid } from 'nanoid';
+import styled from 'styled-components';
 import ContactForm from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
@@ -52,8 +53,19 @@ export class App extends Component {
   };
 
   render() {
+    const Wrapper = styled.section`
+      padding: 4em;
+      background: papayawhip;
+      border: 1px solid black;
+      height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    `;
+
     return (
-      <div>
+      <Wrapper>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
 
@@ -66,7 +78,7 @@ export class App extends Component {
           filter={this.state.filter}
           onDelete={this.deleteContact}
         />
-      </div>
+      </Wrapper>
     );
   }
 }

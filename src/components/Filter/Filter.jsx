@@ -1,8 +1,20 @@
+import styled from 'styled-components';
+
+const Input = styled.input`
+  width: 150px;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export const Filter = ({ value, onChange }) => {
   return (
-    <div>
+    <Wrapper>
       <h2>Find contacts by name</h2>
-      <input type="text" name="filter" value={value} onChange={onChange} />
-    </div>
+      <Input type="text" name="filter" value={value} onChange={onChange} />
+    </Wrapper>
   );
 };

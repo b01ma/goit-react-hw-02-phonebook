@@ -1,15 +1,38 @@
+import styled from 'styled-components';
+
+const Button = styled.button`
+  color: black;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid orange;
+  border-radius: 3px;
+`;
+
+const Ul = styled.ul`
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Li = styled.li`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const ContactList = ({ contacts, filter, onDelete }) => {
   return (
-    <ul>
+    <Ul>
       {contacts.map(
         contact =>
           contact.name.toLowerCase().includes(filter.toLowerCase()) && (
-            <li key={contact.id}>
+            <Li key={contact.id}>
               {contact.name}: {contact.number}
-              <button onClick={() => onDelete(contact.id)}>Delete</button>
-            </li>
+              <Button onClick={() => onDelete(contact.id)}>Delete</Button>
+            </Li>
           )
       )}
-    </ul>
+    </Ul>
   );
 };
