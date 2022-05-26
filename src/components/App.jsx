@@ -22,15 +22,9 @@ export class App extends Component {
   };
 
   isSameContact = (name, number) => {
-    let contactsNameArray = [];
-    let contactsNumberArray = [];
-
-    contactsNameArray = this.state.contacts.map(contact => contact.name);
-
-    contactsNumberArray = this.state.contacts.map(contact => contact.number);
-
     return (
-      contactsNameArray.includes(name) || contactsNumberArray.includes(number)
+      this.state.contacts.find(contact => contact.name === name) ||
+      this.state.contacts.find(contact => contact.number === number)
     );
   };
 
@@ -47,7 +41,7 @@ export class App extends Component {
       : this.setState({ contacts: updatedContacts });
   };
 
-  filterChange = e => {
+  handleFilterChange = e => {
     this.setState({ filter: e.currentTarget.value });
   };
 
@@ -69,7 +63,7 @@ export class App extends Component {
 
         <h1>Contacts</h1>
 
-        <Filter onChange={this.filterChange} value={this.state.filter} />
+        <Filter onChange={this.handleFilterChange} value={this.state.filter} />
 
         <ContactList
           contacts={this.state.contacts}
