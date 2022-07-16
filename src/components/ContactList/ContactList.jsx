@@ -1,25 +1,5 @@
-import styled from 'styled-components';
-
-const Button = styled.button`
-  color: black;
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid orange;
-  border-radius: 3px;
-`;
-
-const Ul = styled.ul`
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-`;
-
-const Li = styled.li`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
+import { Button, Ul, Li } from './ContactList.css';
+import propTypes from 'prop-types';
 
 export const ContactList = ({ contacts, onDelete }) => {
   return (
@@ -32,4 +12,14 @@ export const ContactList = ({ contacts, onDelete }) => {
       ))}
     </Ul>
   );
+};
+
+ContactList.propTypes = {
+  contacts: propTypes.arrayOf(
+    propTypes.shape({
+      id: propTypes.string.isRequired,
+      name: propTypes.string.isRequired,
+      number: propTypes.string.isRequired,
+    })
+  ).isRequired,
 };

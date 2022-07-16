@@ -1,14 +1,5 @@
-import styled from 'styled-components';
-
-const Input = styled.input`
-  width: 150px;
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
+import { Wrapper, Input } from './Filter.css';
+import propTypes from 'prop-types';
 
 export const Filter = ({ value, onChange }) => {
   return (
@@ -17,4 +8,9 @@ export const Filter = ({ value, onChange }) => {
       <Input type="text" name="filter" value={value} onChange={onChange} />
     </Wrapper>
   );
+};
+
+Filter.propTypes = {
+  value: propTypes.string.isRequired,
+  onChange: propTypes.func.isRequired,
 };

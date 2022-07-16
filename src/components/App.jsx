@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import ContactForm from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
+import wrapper from './App.css';
 
 export class App extends Component {
   state = {
@@ -59,16 +60,6 @@ export class App extends Component {
   };
 
   render() {
-    const wrapper = {
-      padding: 10,
-      background: 'papayawhip',
-      minHeight: '100vh',
-
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-    };
-
     return (
       <div style={wrapper}>
         <h1>Phonebook</h1>
