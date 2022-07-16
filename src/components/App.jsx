@@ -23,8 +23,13 @@ export class App extends Component {
 
   isSameContact = (name, number) => {
     return (
-      this.state.contacts.find(contact => contact.name === name) ||
-      this.state.contacts.find(contact => contact.number === number)
+      this.state.contacts.find(
+        contact =>
+          contact.name.toLowerCase().trim() === name.toLowerCase().trim()
+      ) ||
+      this.state.contacts.find(
+        contact => contact.number.trim() === number.trim()
+      )
     );
   };
 
@@ -49,7 +54,7 @@ export class App extends Component {
     const wrapper = {
       padding: 10,
       background: 'papayawhip',
-      height: '100vh',
+      minHeight: '100vh',
 
       display: 'flex',
       flexDirection: 'column',
