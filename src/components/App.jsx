@@ -50,6 +50,14 @@ export class App extends Component {
     this.setState({ filter: e.currentTarget.value });
   };
 
+  handleFilter = filter => {
+    const filteredContacts = this.state.contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
+
+    return filteredContacts;
+  };
+
   render() {
     const wrapper = {
       padding: 10,
@@ -65,14 +73,11 @@ export class App extends Component {
       <div style={wrapper}>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
-
         <h1>Contacts</h1>
-
         <Filter onChange={this.handleFilterChange} value={this.state.filter} />
 
         <ContactList
-          contacts={this.state.contacts}
-          filter={this.state.filter}
+          contacts={this.handleFilter(this.state.filter)}
           onDelete={this.deleteContact}
         />
       </div>

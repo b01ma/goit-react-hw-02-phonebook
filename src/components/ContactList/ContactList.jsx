@@ -21,18 +21,15 @@ const Li = styled.li`
   align-items: center;
 `;
 
-export const ContactList = ({ contacts, filter, onDelete }) => {
+export const ContactList = ({ contacts, onDelete }) => {
   return (
     <Ul>
-      {contacts.map(
-        contact =>
-          contact.name.toLowerCase().includes(filter.toLowerCase()) && (
-            <Li key={contact.id}>
-              {contact.name}: {contact.number}
-              <Button onClick={() => onDelete(contact.id)}>Delete</Button>
-            </Li>
-          )
-      )}
+      {contacts.map(contact => (
+        <Li key={contact.id}>
+          {contact.name}: {contact.number}
+          <Button onClick={() => onDelete(contact.id)}>Delete</Button>
+        </Li>
+      ))}
     </Ul>
   );
 };
