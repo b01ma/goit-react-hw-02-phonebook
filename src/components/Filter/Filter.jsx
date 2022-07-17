@@ -1,5 +1,5 @@
 import { Wrapper, Input } from './Filter.css';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 export const Filter = ({ value, onChange }) => {
   return (
@@ -11,6 +11,6 @@ export const Filter = ({ value, onChange }) => {
 };
 
 Filter.propTypes = {
-  value: propTypes.string.isRequired,
-  onChange: propTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };

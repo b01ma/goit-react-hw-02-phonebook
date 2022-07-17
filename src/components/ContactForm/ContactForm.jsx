@@ -1,6 +1,6 @@
 import { Component } from 'react/cjs/react.production.min';
 import { Wrapper, Label, Button } from './ContactForm.css';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class ContactForm extends Component {
   state = {
@@ -22,7 +22,7 @@ class ContactForm extends Component {
 
   render() {
     ContactForm.propTypes = {
-      onSubmit: propTypes.func.isRequired,
+      onSubmit: PropTypes.func.isRequired,
     };
     return (
       <form onSubmit={this.handleSubmit}>
